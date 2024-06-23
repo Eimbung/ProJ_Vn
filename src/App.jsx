@@ -54,20 +54,30 @@ function App() {
           </svg>
         </a>
       </div>
-      <div className='flex justify-center'>
+      <div className ='flex justify-center'>
         <input type="file" className="file-input file-input-bordered file-input-success w-full max-w-xs mt-4" multiple onChange={handleImageUpload} />
       </div >
-      <h1></h1>
-
-      <div className='flex justify-center py-10'>
-        {imageURL.map((img, index) => {
-          return <div className='mx-1' key={index}><img src={URL.createObjectURL(img)} key={index} style={{ width: 350, height: 350 }} /></div>
-        })}
-
-      </div>
-
+      <h1 className ='flex justify-center'>You can add more thant 1 picture</h1>
 
       {selected && <div className='flex justify-center'>
+        <div className='flex justify-center mt-4 p-2 bg-zinc-200 size-fit border-2 border-green-400'>
+          <div className="grid grid-cols-8 gap-4 ">
+            {
+              imageURL.map((file, index) => {
+                return (<img
+                  key={index}
+                  src={URL.createObjectURL(file)}
+                  alt={`selected-img-${index}`}
+                  width={120} height={125}
+                />
+                )
+              })}
+          </div>
+        </div>
+      </div>}
+
+
+      {selected && <div className='flex justify-center mt-4'>
         <button className="btn btn-wide  bg-success" onClick={handleUpload}>Upload</button>
       </div>}
 
